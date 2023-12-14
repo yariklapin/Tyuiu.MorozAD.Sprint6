@@ -88,15 +88,19 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
             OpenFilePath = openFileDialogTask_MAD.FileName;
 
             int[,] arrayValues = LoadFromFileData(OpenFilePath);
+
             dataGridViewIn_MAD.ColumnCount = columns;
             dataGridViewIn_MAD.RowCount = rows;
             dataGridViewRes_MAD.ColumnCount = columns;
             dataGridViewRes_MAD.RowCount = rows;
+            
+            
             for (int i = 0; i < columns; i++)
             {
                 dataGridViewIn_MAD.Columns[i].Width = 25;
                 dataGridViewRes_MAD.Columns[i].Width = 25;
             }
+
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
@@ -106,6 +110,7 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
 
 
             }
+
             arrayValues = ds.GetMatrix(LoadFromFileData(OpenFilePath));
             buttonDone_MAD.Enabled = true;
         }
