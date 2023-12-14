@@ -27,7 +27,9 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
 
         private void ClickSave_MAD(object sender, EventArgs e)
         {
-
+            saveFileDialog_MAD.FileName = "OutPutFileTask7V20.csv";
+            saveFileDialog_MAD.InitialDirectory = Directory.GetCurrentDirectory();
+            saveFileDialog_MAD.ShowDialog();
         }
 
         private void ClickDone_MAD(object sender, EventArgs e)
@@ -50,12 +52,18 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
         public static int[,] LoadFromFileData(string FilePath)
         {
             string fileDta = File.ReadAllText(FilePath);
+
+
             fileDta = fileDta.Replace('\n', '\r');
             string[] lines = fileDta.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
             rows = lines.Length;
             columns = lines[0].Split(';').Length;
+
+
             int[,] arrayValues = new int[rows, columns];
+
+
             for (int i = 0; i < rows; i++)
             {
                 string[] line_r = lines[i].Split(';');
@@ -67,6 +75,8 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
             }
             return arrayValues;
         }
+
+
         private void ClickOpenFile_MAD(object sender, EventArgs e)
         {
             openFileDialogTask_MAD.ShowDialog();
