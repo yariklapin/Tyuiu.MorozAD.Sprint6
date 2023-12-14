@@ -25,30 +25,10 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
         
         DataService ds = new DataService();
 
-        private void ClickSave_MAD(object sender, EventArgs e)
-        {
-            saveFileDialog_MAD.FileName = "OutPutFileTask7V20.csv";
-            saveFileDialog_MAD.InitialDirectory = Directory.GetCurrentDirectory();
-            saveFileDialog_MAD.ShowDialog();
-        }
-
-        private void ClickDone_MAD(object sender, EventArgs e)
-        {
-            int[,] arrayValues = new int[rows, columns];
-            arrayValues = ds.GetMatrix(LoadFromFileData(OpenFilePath));
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    dataGridViewRes_MAD.Rows[i].Cells[j].Value = arrayValues[i, j];
-                }
-
-
-            }
-            buttonSave_MAD.Enabled = true;
-        }
         static int rows;
         static int columns;
+
+
         public static int[,] LoadFromFileData(string FilePath)
         {
             string fileDta = File.ReadAllText(FilePath);
@@ -74,6 +54,31 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
                 }
             }
             return arrayValues;
+        }
+
+
+        private void ClickSave_MAD(object sender, EventArgs e)
+        {
+            saveFileDialog_MAD.FileName = "OutPutFileTask7V20.csv";
+            saveFileDialog_MAD.InitialDirectory = Directory.GetCurrentDirectory();
+            saveFileDialog_MAD.ShowDialog();
+        }
+
+
+        private void ClickDone_MAD(object sender, EventArgs e)
+        {
+            int[,] arrayValues = new int[rows, columns];
+            arrayValues = ds.GetMatrix(LoadFromFileData(OpenFilePath));
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    dataGridViewRes_MAD.Rows[i].Cells[j].Value = arrayValues[i, j];
+                }
+
+
+            }
+            buttonSave_MAD.Enabled = true;
         }
 
 
@@ -104,6 +109,8 @@ namespace Tyuiu.MorozAD.Sprint6.Task7.V20
             arrayValues = ds.GetMatrix(LoadFromFileData(OpenFilePath));
             buttonDone_MAD.Enabled = true;
         }
+
+
         private void ClickHelp_MAD(object sender, EventArgs e)
         {
             FormAbout formAbout = new FormAbout();
